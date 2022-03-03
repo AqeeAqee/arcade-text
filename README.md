@@ -1,7 +1,7 @@
 # customized by Aqee
 * add multiline mode
 * changed outline code, to avoid memery run out
-
+* move rendering icon to last, or icon could be ruin by rendering outline
 
 ----------
 
