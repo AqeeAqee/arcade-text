@@ -18,8 +18,9 @@ for (let h of heights) {
     s2.setOutline(1, 6)
     s2.left = 36
     s2.top = y
-    s3 = textsprite.create("x" + "99", 1, 3)
+    s3 = textsprite.create("x" + "99", 1, 9)
     s3.setBorder(1, 3, 1)
+    s3.setOutline(1,7)
     s3.setMaxFontHeight(h)
     s3.setIcon(img`
         . . 8 . .

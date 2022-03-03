@@ -44,10 +44,6 @@ class TextSprite extends Sprite {
         const img = image.create(width, height);
         img.fill(this.borderColor);
         img.fillRect(this.borderWidth, this.borderWidth, width - this.borderWidth * 2, height - this.borderWidth * 2, this.bg)
-        if (this.icon) {
-            const iconHeightOffset = (height - iconHeight) / 2
-            textsprite.renderScaledImage(this.icon, img, borderAndPadding, iconHeightOffset)
-        }
         const textHeightOffset = (height - font.charHeight*lines) / 2
         for(let i=0;i<lines;i++){
             img.print(this.text.substr(i*charsPerLine,charsPerLine), iconWidth + borderAndPadding, textHeightOffset+i*font.charHeight, this.fg, font);
@@ -56,6 +52,10 @@ class TextSprite extends Sprite {
         if (this.outlineWidth > 0)
             textsprite.outlineOtherColor(img, this.fg, this.outlineWidth, this.outlineColor)
         console.log("outlineWidth")
+        if (this.icon) {
+            const iconHeightOffset = (height - iconHeight) / 2
+            textsprite.renderScaledImage(this.icon, img, borderAndPadding, iconHeightOffset)
+        }
         this.setImage(img)
     }
 
