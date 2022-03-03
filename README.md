@@ -1,3 +1,10 @@
+# customized by Aqee
+* add multiline mode
+* changed outline code, to avoid memery run out
+
+
+----------
+
 # Text Sprite ![Build status badge](https://github.com/microsoft/arcade-text/workflows/MakeCode/badge.svg)
 
 ## Usage
