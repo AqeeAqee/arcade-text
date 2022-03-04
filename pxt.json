@@ -9,7 +9,8 @@
         "main.blocks",
         "main.ts",
         "README.md",
-        "text.ts"
+        "text.ts",
+        "test_singleline.ts"
     ],
     "testFiles": [
         "test.ts"

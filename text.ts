@@ -48,10 +48,8 @@ class TextSprite extends Sprite {
         for(let i=0;i<lines;i++){
             img.print(this.text.substr(i*charsPerLine,charsPerLine), iconWidth + borderAndPadding, textHeightOffset+i*font.charHeight, this.fg, font);
         }
-        console.log("outlineWidth "+this.text)
         if (this.outlineWidth > 0)
             textsprite.outlineOtherColor(img, this.fg, this.outlineWidth, this.outlineColor)
-        console.log("outlineWidth")
         if (this.icon) {
             const iconHeightOffset = (height - iconHeight) / 2
             textsprite.renderScaledImage(this.icon, img, borderAndPadding, iconHeightOffset)
@@ -193,16 +191,15 @@ namespace textsprite {
                             img.setPixel(x, y, outlineColor)
                             // toOutlineX.push(x)
                             // toOutlineY.push(y)
-                            // console.log("outlineOtherColor " + toOutlineX.length)
                         }
                     }
                 }
             }
         }
-        for (let i = 0; i < toOutlineX.length; i++) {
-            const x = toOutlineX[i]
-            const y = toOutlineY[i]
-            img.setPixel(x, y, outlineColor)
-        }
+        // for (let i = 0; i < toOutlineX.length; i++) {
+        //     const x = toOutlineX[i]
+        //     const y = toOutlineY[i]
+        //     img.setPixel(x, y, outlineColor)
+        // }
     }
 }
