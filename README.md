@@ -1,5 +1,5 @@
 # customized by Aqee
-* add multiline mode
+* add multiline mode, support newline symbol "\n"
 * changed outline code, to avoid memery run out
 * move rendering icon to last, or icon could be ruin by rendering outline
 
