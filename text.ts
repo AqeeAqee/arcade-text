@@ -25,29 +25,34 @@ class TextSprite extends Sprite {
     }
 
     //multilines
-    charsPerLine:number=0
+    charsPerLine:number=1000 //a big number
 
     public update() {
         const borderAndPadding = this.borderWidth + this.padding + this.outlineWidth;
         const iconWidth = this.icon ? this.icon.width + this.padding + this.outlineWidth : 0;
         const iconHeight = this.icon ? this.icon.height : 0;
         const font = textsprite.getFontForTextAndHeight(this.text, this.maxFontHeight);
-        let charsPerLine = this.text.length
-        let lines=1
-        //multilines
-        if (this.charsPerLine>0 && this.text.length>this.charsPerLine){
-            charsPerLine=this.charsPerLine
-            lines=Math.ceil(this.text.length/charsPerLine)
-        }
+        let lineHeight = font.charHeight + 1 + this.outlineWidth*2
+
+        let paragraphs = this.text.split("\n")
+        
+        let charsPerLine = paragraphs.reduce((p, n, i) => {return Math.max(p, Math.min(n.length, this.charsPerLine))}, 0)
+        let totalLineCount = paragraphs.reduce((p, n, i) => { return p + Math.ceil(Math.max(1,n.length) / charsPerLine) }, 0)
         let width = iconWidth + font.charWidth * charsPerLine + 2 * borderAndPadding;
-        let height = Math.max(iconHeight, font.charHeight*lines) + 2 * borderAndPadding;
+        let height = lineHeight * totalLineCount
+        height = Math.max(iconHeight, height) + 2 * borderAndPadding;
         const img = image.create(width, height);
         img.fill(this.borderColor);
         img.fillRect(this.borderWidth, this.borderWidth, width - this.borderWidth * 2, height - this.borderWidth * 2, this.bg)
-        const textHeightOffset = (height - font.charHeight*lines) / 2
-        for(let i=0;i<lines;i++){
-            img.print(this.text.substr(i*charsPerLine,charsPerLine), iconWidth + borderAndPadding, textHeightOffset+i*font.charHeight, this.fg, font);
-        }
+        let textHeightOffset = (height - lineHeight * totalLineCount) / 2
+        
+        paragraphs.forEach((paragraph, j) => {
+            for (let i = 0; i < Math.ceil(Math.max(1,paragraph.length)/charsPerLine);i++){
+                img.print(paragraph.substr(i * charsPerLine, charsPerLine), iconWidth + borderAndPadding, textHeightOffset, this.fg, font);
+                textHeightOffset += lineHeight
+            }
+        })
+
         if (this.outlineWidth > 0)
             textsprite.outlineOtherColor(img, this.fg, this.outlineWidth, this.outlineColor)
         if (this.icon) {
