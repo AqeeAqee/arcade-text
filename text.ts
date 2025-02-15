@@ -36,7 +36,7 @@ class TextSprite extends Sprite {
 
         let paragraphs = this.text.split("\\n")
         
-        let charsPerLine = paragraphs.reduce((p, n, i) => {return Math.max(p, Math.min(n.length, this.charsPerLine))}, 0)
+        let charsPerLine = paragraphs.reduce((p, n, i) => {return Math.max(p, Math.min(n.length, this.charsPerLine))}, 1)
         let totalLineCount = paragraphs.reduce((p, n, i) => { return p + Math.ceil(Math.max(1,n.length) / charsPerLine) }, 0)
         let width = iconWidth + font.charWidth * charsPerLine + 2 * borderAndPadding;
         let height = lineHeight * totalLineCount
