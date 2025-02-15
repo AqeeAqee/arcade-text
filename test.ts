@@ -32,13 +32,13 @@ for (let h of heights) {
 }
 pause(2000)
 
-//test newline, "\n"
+//test newline, "\\n"
 
 sm1.setMaxFontHeight(0)
 sm1.setCharsPerLine(7)
-sm1.setText("testing\n\nTwinkle\ntwinkle\nlittle star...")
+sm1.setText("testing\\n\\nTwinkle\\ntwinkle\\nlittle star...")
 pause(2000)
 
 sm1.top = 4
 sm1.left = 4
-sm1.setText("testing\n\n测试中文\n锄禾日当午，\n汗滴禾下土，\n谁知盘中餐，\n粒粒皆辛苦。")
+sm1.setText("testing\\n\\n测试中文\\n锄禾日当午，\\n汗滴禾下土，\\n谁知盘中餐，\\n粒粒皆辛苦。")

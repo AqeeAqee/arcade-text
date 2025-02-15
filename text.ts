@@ -34,7 +34,7 @@ class TextSprite extends Sprite {
         const font = textsprite.getFontForTextAndHeight(this.text, this.maxFontHeight);
         let lineHeight = font.charHeight + 1 + this.outlineWidth*2
 
-        let paragraphs = this.text.split("\n")
+        let paragraphs = this.text.split("\\n")
         
         let charsPerLine = paragraphs.reduce((p, n, i) => {return Math.max(p, Math.min(n.length, this.charsPerLine))}, 0)
         let totalLineCount = paragraphs.reduce((p, n, i) => { return p + Math.ceil(Math.max(1,n.length) / charsPerLine) }, 0)
