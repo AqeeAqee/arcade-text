@@ -1,6 +1,6 @@
 # customized by Aqee
 * add multiline mode, support newline symbol "\n".
-  * [Note]Use "\n" in block editor, while use "\\n" in code editor, for makecode transform between them automatically.
+  * [Note]Use "\n" in block editor, while use "\\\n" in code editor, for makecode transform between them automatically.
 * changed outline code, to avoid memery run out
 * move rendering icon to last, or icon could be ruin by rendering outline
 
